@@ -1,5 +1,12 @@
+import 'package:barber_app/ui/settings/settings.dart';
+import 'package:barber_app/ui/userInfo/setYourLocation.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+
+import '../aboutUs/aboutApp.dart';
+import '../myStyle/myStyle.dart';
+import '../userInfo/changeLocation.dart';
+import 'editProfile.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -49,7 +56,9 @@ class _ProfileState extends State<Profile> {
           ],
         ),
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.edit_outlined, color: Colors.black,))
+          IconButton(onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditProfile()));
+            }, icon: Icon(Icons.edit_outlined, color: Colors.black,))
         ],
       ),
       body: Padding(
@@ -81,7 +90,9 @@ class _ProfileState extends State<Profile> {
                   Icon(Icons.person_outline),
                   Expanded(child: Text("My Style")),
                   IconButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyStyle()));
+                    },
                     icon: Icon(Icons.arrow_forward_ios),
                   ),
                 ],
@@ -115,7 +126,9 @@ class _ProfileState extends State<Profile> {
                   ),
                   Expanded(child: Text("Address")),
                   IconButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChangeLocationScreen()));
+                    },
                     icon: Icon(Icons.arrow_forward_ios, size: 20,),
                   ),
                 ],
@@ -169,7 +182,9 @@ class _ProfileState extends State<Profile> {
                   ),
                   Expanded(child: Text("Settings")),
                   IconButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settings()));
+                    },
                     icon: Icon(Icons.arrow_forward_ios, size: 20,),
                   ),
                 ],
@@ -203,7 +218,10 @@ class _ProfileState extends State<Profile> {
                   ),
                   Expanded(child: Text("About")),
                   IconButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => About()));
+
+                    },
                     icon: Icon(Icons.arrow_forward_ios, size: 20,),
                   ),
                 ],
@@ -230,7 +248,25 @@ class _ProfileState extends State<Profile> {
                   ),
                   Expanded(child: Text("Rate this app")),
                   IconButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: const Text('Rate this App'),
+                          content: const Text('If you like this app please take a moment to rate it on playstore'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'LATER'),
+                              child: const Text('LATER'),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'RATE APP'),
+                              child: const Text('RATE APP'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                     icon: Icon(Icons.arrow_forward_ios,  size: 20,),
                   ),
                 ],
@@ -301,6 +337,7 @@ class _ProfileState extends State<Profile> {
   _onShareWithEmptyFields(BuildContext context) async {
     await Share.share("Applinkhere");
   }
+
 }
 
 

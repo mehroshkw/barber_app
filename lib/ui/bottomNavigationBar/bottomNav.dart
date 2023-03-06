@@ -5,6 +5,7 @@ import 'package:barber_app/ui/home/home.dart';
 import 'package:barber_app/ui/profile/profile.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart' as badges;
 
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      backgroundColor: Colors.blueGrey,
+      // backgroundColor: Colors.blueGrey,
       bottomNavigationBar: CurvedNavigationBar(
         height: 60,
         key: bottomNavigationKey,
@@ -52,7 +53,9 @@ class _BottomNavState extends State<BottomNav> {
         color: Colors.white,
         items: [
           Icon(Icons.home_outlined, color: index==0 ? Colors.white : Colors.blue),
-          Icon(Icons.favorite_border, color: index==1 ? Colors.white : Colors.blue),
+          badges.Badge(
+              badgeContent: Text('3'),
+              child: Icon(Icons.favorite_border, color: index==1 ? Colors.white : Colors.blue)),
           Icon(Icons.calendar_today_outlined, color: index==2 ? Colors.white : Colors.blue),
           Icon(Icons.message_outlined, color: index==3 ? Colors.white : Colors.blue),
           Icon(Icons.person_outline, color: index==4 ? Colors.white : Colors.blue)
