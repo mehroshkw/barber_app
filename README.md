@@ -44,7 +44,7 @@ The Online Barber Shop Booking App is a mobile application developed to revoluti
 Contributions to the project are welcome! Feel free to fork the repository, make your changes, and submit a pull request. For major changes, please open an issue first to discuss the proposed changes.
 
 
-![Barber Shop App](https://github.com/mehroshkw/barber_app/screenshot.jpg)
+![Barber Shop App](https://github.com/mehroshkw/barber_app/screenshot.png)
 
 
 
